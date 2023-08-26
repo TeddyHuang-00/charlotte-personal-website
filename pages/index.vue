@@ -12,38 +12,40 @@
       <div
         class="sticky top-0 left-0 w-full h-56 md:w-0 md:h-0 bg-zinc-900 z-30"
       ></div>
-      <span class="w-full md:w-1/2">
-        <div id="bio" class="wrapper">
+      <div class="w-full md:w-1/2">
+        <section id="bio" class="wrapper">
           <p ref="b">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
             Aspernatur, earum voluptatibus fugit deserunt modi omnis quibusdam!
             Error dolores libero totam tempora possimus illo laboriosam commodi,
             iusto eum. Tempora, enim adipisci.
           </p>
-        </div>
-        <div id="research" class="wrapper">
+        </section>
+        <section id="research" class="wrapper">
           <p ref="r">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi
             quo quia architecto sint ipsum impedit beatae! Nam, repellat! Qui
             aliquid itaque ab pariatur maiores saepe, animi consequatur vel
             corrupti facilis?
           </p>
-        </div>
-        <div id="contact" class="wrapper">
+        </section>
+        <section id="contact" class="wrapper">
           <p ref="c">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam magni
             debitis, ipsum illum dicta, ratione est vel voluptatem quibusdam
             repudiandae eius veniam nihil earum quidem provident praesentium.
             Voluptas, ipsa dolores?
           </p>
-        </div>
-      </span>
+        </section>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 const router = useRouter();
+const debounce = 500;
+const maxWait = 1000;
 
 const b = ref(null as HTMLElement | null);
 const r = ref(null as HTMLElement | null);
@@ -60,7 +62,7 @@ watchDebounced(
       router.push({ hash: "#bio" });
     }
   },
-  { debounce: 500, maxWait: 1000 }
+  { debounce, maxWait }
 );
 watchDebounced(
   research,
@@ -69,7 +71,7 @@ watchDebounced(
       router.push({ hash: "#research" });
     }
   },
-  { debounce: 500, maxWait: 1000 }
+  { debounce, maxWait }
 );
 watchDebounced(
   contact,
@@ -78,7 +80,16 @@ watchDebounced(
       router.push({ hash: "#contact" });
     }
   },
-  { debounce: 500, maxWait: 1000 }
+  { debounce, maxWait }
+);
+watchDebounced(
+  () => [bio.value, research.value, contact.value],
+  (v) => {
+    if (v.every((x) => !x)) {
+      router.push({ hash: "" });
+    }
+  },
+  { debounce, maxWait }
 );
 </script>
 
