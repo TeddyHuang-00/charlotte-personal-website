@@ -4,5 +4,10 @@ export default defineNuxtConfig({
     baseURL: "/nhuang1/",
   },
   devtools: { enabled: true },
-  modules: ["@nuxtjs/tailwindcss", "@vueuse/nuxt", "nuxt-icon"],
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "@vueuse/nuxt",
+    "nuxt-icon",
+    "@vueuse/motion/nuxt",
+  ],
 });
