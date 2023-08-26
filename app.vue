@@ -8,6 +8,6 @@
 
 <style>
 html {
-  @apply bg-zinc-900 text-white;
+  @apply bg-zinc-900 text-white scroll-smooth;
 }
 </style>
