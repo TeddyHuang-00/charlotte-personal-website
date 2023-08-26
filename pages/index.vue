@@ -49,34 +49,37 @@ const b = ref(null as HTMLElement | null);
 const r = ref(null as HTMLElement | null);
 const c = ref(null as HTMLElement | null);
 
-const bio = ref(false);
-const research = ref(false);
-const contact = ref(false);
+const bio = useElementVisibility(b);
+const research = useElementVisibility(r);
+const contact = useElementVisibility(c);
 
-useIntersectionObserver(b, ([{ isIntersecting }], observerElement) => {
-  bio.value = isIntersecting;
-});
-watch(bio, (v) => {
-  if (v) {
-    router.push({ hash: "#bio" });
-  }
-});
-useIntersectionObserver(r, ([{ isIntersecting }], observerElement) => {
-  research.value = isIntersecting;
-});
-watch(research, (v) => {
-  if (v) {
-    router.push({ hash: "#research" });
-  }
-});
-useIntersectionObserver(c, ([{ isIntersecting }], observerElement) => {
-  contact.value = isIntersecting;
-});
-watch(contact, (v) => {
-  if (v) {
-    router.push({ hash: "#contact" });
-  }
-});
+watchDebounced(
+  bio,
+  (v) => {
+    if (v) {
+      router.push({ hash: "#bio" });
+    }
+  },
+  { debounce: 500, maxWait: 1000 }
+);
+watchDebounced(
+  research,
+  (v) => {
+    if (v) {
+      router.push({ hash: "#research" });
+    }
+  },
+  { debounce: 500, maxWait: 1000 }
+);
+watchDebounced(
+  contact,
+  (v) => {
+    if (v) {
+      router.push({ hash: "#contact" });
+    }
+  },
+  { debounce: 500, maxWait: 1000 }
+);
 </script>
 
 <style>
