@@ -1,5 +1,5 @@
 <template>
-  <div :style="`height: ${strokeLength + height}px`" class="relative">
+  <div :style="`height: ${strokeLength + height}px`" class="relative w-full">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="384"
@@ -7,9 +7,8 @@
       class="left-1/2 -translate-x-1/2 translate-y-1/2"
       :class="{
         'fixed bottom-1/2': !animationDone,
-        absolute: animationDone,
+        'absolute bottom-[50vh]': animationDone,
       }"
-      :style="animationDone ? `bottom: ${height / 2}px` : ''"
     >
       <path
         ref="logo"
@@ -22,13 +21,15 @@
         :stroke-opacity="strokeOpacity"
         :stroke-dasharray="strokeLength"
         :stroke-dashoffset="strokeOffset"
-        d="M203.315 252.699c-6.415 47.947-6.812 95.855-6.1 143.45-25.655-42.942-38.759-90.802-35.567-141.423l-7.773.356c-1.492.068-2.616-.86-2.807-2.148l-14.966.738c-1.525.076-2.595-1.105-2.303-2.544l12.473-36.977c.278-1.362 1.671-2.406 3.09-2.315l7.885.83c.561-1.338 2.009-2.311 3.516-2.24l7.662.355c12.422-50.626 40.291-98.486 79.191-141.423-15.392 47.594-29.772 95.502-38.148 143.45l10.913 4.485 104.455-5.137c1.545-.076 2.973-1.099 3.237-2.576l.004-.027c6.568-37.843 14.893-80.068 22.938-117.583.407-1.9-.001-3.588-1.225-5.07a2602.909 2602.909 0 0 1-29.294-36.39c-1.204-1.51-2.913-2.32-5.121-2.429-59.924-2.917-119.853-5.797-179.782-8.638-2.042-.096-3.996.58-5.864 2.033A3440.135 3440.135 0 0 0 84.477 77.31c-1.852 1.492-2.99 3.272-3.412 5.336A3159.698 3159.698 0 0 0 32.87 398.583c-.212 2.102.373 3.895 1.756 5.378a2860.748 2860.748 0 0 0 33.86 35.695c1.244 1.288 5.201.899 5.201.899h173.369s4.332-.96 5.825-2.363c13.527-12.82 34.433-33.926 48.108-46.444 1.696-1.544 2.652-6.916 2.866-8.852a2899.567 2899.567 0 0 1 11.275-89.34c1.744-12.28 3.947-25.687 5.964-38.193.415-2.577-1.616-4.912-4.308-4.958l-101.236-1.752-12.23 4.065"
+        d="M204.98 254.54c-7.356 54.977-7.81 109.91-6.994 164.48-29.417-49.239-44.442-104.12-40.782-162.16l-8.913.408c-1.711.078-3-.986-3.219-2.463l-17.16.847c-1.748.086-2.975-1.268-2.64-2.917l14.301-42.4c.32-1.561 1.916-2.758 3.544-2.654l9.04.952c.644-1.534 2.304-2.65 4.032-2.569l8.786.407c14.243-58.049 46.199-112.93 90.803-162.16-17.65 54.573-34.137 109.51-43.742 164.48l12.513 5.143 119.77-5.89c1.771-.087 3.409-1.26 3.711-2.954l.005-.03c7.531-43.393 17.077-91.809 26.301-134.82.467-2.18 0-4.115-1.404-5.814a2984.6 2984.6 0 0 1-33.59-41.726c-1.38-1.731-3.34-2.66-5.871-2.785a163277.75 163277.75 0 0 0-206.14-9.905c-2.341-.11-4.582.665-6.724 2.331A3944.6 3944.6 0 0 0 68.72 53.43c-2.123 1.711-3.428 3.752-3.912 6.119a3623 3623 0 0 0-55.262 362.26c-.243 2.41.428 4.466 2.013 6.166a3280.2 3280.2 0 0 0 38.825 40.93c1.427 1.476 5.964 1.03 5.964 1.03h198.79s4.967-1.1 6.68-2.71c15.51-14.7 39.481-38.9 55.161-53.253 1.945-1.77 3.04-7.93 3.286-10.15a3324.7 3324.7 0 0 1 12.928-102.44c2-14.081 4.526-29.453 6.839-43.793.476-2.955-1.853-5.633-4.94-5.685l-116.08-2.01-14.023 4.662"
       />
     </svg>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useMax, useClamp } from "@vueuse/math";
+
 const logo = ref(null as SVGPathElement | null);
 const strokeLength = ref(0);
 const { height } = useWindowSize();
@@ -38,19 +39,15 @@ const speedFactor = 2;
 onMounted(() => {
   strokeLength.value = logo.value?.getTotalLength() ?? 0;
 });
-const strokeOffset = computed(() => {
-  return Math.max(0, strokeLength.value - y.value * speedFactor);
-});
-const strokeOpacity = computed(() => {
-  return Math.max(
-    0,
-    Math.min(
-      1,
-      1 - (y.value * speedFactor - strokeLength.value) / strokeLength.value
-    )
-  );
-});
-const animationDone = computed(() => {
-  return strokeOpacity.value === 0;
+const strokeOffset = useMax(0, useSub(strokeLength, useMul(y, speedFactor)));
+const strokeOpacity = useClamp(
+  useSub(1, useDiv(useSub(useMul(y, speedFactor), strokeLength), strokeLength)),
+  0,
+  1
+);
+const animationDone = useEq(strokeOpacity, 0);
+
+onMounted(() => {
+  strokeLength.value = logo.value?.getTotalLength() ?? 0;
 });
 </script>

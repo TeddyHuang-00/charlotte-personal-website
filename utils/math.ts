@@ -1,0 +1,25 @@
+// These are some basic math operations reactified for use with refs
+export const useAdd = reactify((a: number, b: number) => a + b);
+export const useSub = reactify((a: number, b: number) => a - b);
+export const useMul = reactify((a: number, b: number) => a * b);
+export const useDiv = reactify((a: number, b: number) => a / b);
+export const useMod = reactify((a: number, b: number) => a % b);
+export const useEq = reactify((a: number, b: number) => a === b);
+export const useNeq = reactify((a: number, b: number) => a !== b);
+export const useGt = reactify((a: number, b: number) => a > b);
+export const useLt = reactify((a: number, b: number) => a < b);
+export const useGte = reactify((a: number, b: number) => a >= b);
+export const useLte = reactify((a: number, b: number) => a <= b);
+export const usePow = reactify(Math.pow);
+export const useSqrt = reactify(Math.sqrt);
+export const useExp = reactify(Math.exp);
+export const useLog = reactify(Math.log);
+export const useLog10 = reactify(Math.log10);
+export const useLog2 = reactify(Math.log2);
+export const useSin = reactify(Math.sin);
+export const useCos = reactify(Math.cos);
+export const useTan = reactify(Math.tan);
+export const useAsin = reactify(Math.asin);
+export const useAcos = reactify(Math.acos);
+export const useAtan = reactify(Math.atan);
+export const useAtan2 = reactify(Math.atan2);
