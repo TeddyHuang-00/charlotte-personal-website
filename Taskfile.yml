@@ -1,0 +1,12 @@
+version: 3
+
+env:
+  OUTPUT: ".output/public/"
+
+dotenv:
+  - ".env"
+
+tasks:
+  default:
+    cmds:
+      - lftp -c "open -e 'mirror -R $OUTPUT $SITEROOT' -u $USERNAME:$PASSWORD sftp://$SITEURL"
