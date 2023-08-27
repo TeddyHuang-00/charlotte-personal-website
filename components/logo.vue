@@ -29,12 +29,13 @@
       />
     </svg>
     <div
-      class="fixed w-full h-fit bottom-0 left-0 flex justify-center items-center transition-all duration-150"
-      :class="{ 'opacity-100': fullyLoaded, 'opacity-0': !fullyLoaded }"
+      class="fixed w-full h-fit bottom-6 left-0 flex justify-center items-center transition-all duration-300"
+      :class="{ 'opacity-100': idle, 'opacity-0': !idle }"
     >
       <Icon
         name="ph:caret-double-down-bold"
         size="48"
+        class="animate-pulse"
         :style="`opacity: ${strokeOpacity}`"
       />
     </div>
@@ -58,6 +59,7 @@ const strokeOpacity = useClamp(
   1
 );
 const animationDone = useEq(strokeOpacity, 0);
+const { idle } = useIdle(5 * 1000);
 
 onMounted(() => {
   strokeLength.value = logo.value?.getTotalLength() ?? 0;
