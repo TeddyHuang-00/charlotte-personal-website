@@ -59,47 +59,29 @@ const bio = useElementVisibility(b);
 const research = useElementVisibility(r);
 const contact = useElementVisibility(c);
 
-watchDebounced(
-  bio,
-  (v) => {
-    if (v) {
-      router.push({ hash: "#bio" });
-    }
-  },
-  { debounce, maxWait }
-);
+watchDebounced(bio, (v) => (v ? router.push({ hash: "#bio" }) : null), {
+  debounce,
+  maxWait,
+});
 watchDebounced(
   research,
-  (v) => {
-    if (v) {
-      router.push({ hash: "#research" });
-    }
-  },
+  (v) => (v ? router.push({ hash: "#research" }) : null),
   { debounce, maxWait }
 );
-watchDebounced(
-  contact,
-  (v) => {
-    if (v) {
-      router.push({ hash: "#contact" });
-    }
-  },
-  { debounce, maxWait }
-);
+watchDebounced(contact, (v) => (v ? router.push({ hash: "#contact" }) : null), {
+  debounce,
+  maxWait,
+});
 
 const fullyLoaded = ref(false);
 onMounted(() => {
-  if (!fullyLoaded.value) {
-    fullyLoaded.value = true;
-  }
+  fullyLoaded.value = true;
 });
 
 const bottom = ref(null as HTMLElement | null);
-watchOnce(useDebounce(useElementVisibility(bottom)), (v) => {
-  if (v) {
-    router.push({ path: "/", hash: "#home" });
-  }
-});
+watchOnce(useDebounce(useElementVisibility(bottom)), (v) =>
+  v ? router.push({ path: "/" }) : null
+);
 </script>
 
 <style scoped>

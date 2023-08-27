@@ -29,7 +29,7 @@
       />
     </svg>
     <div
-      class="fixed w-full h-fit bottom-6 left-0 flex justify-center items-center transition-all duration-300"
+      class="fixed w-full h-fit bottom-6 left-0 flex justify-center items-center transition-all duration-500"
       :class="{ 'opacity-100': idle, 'opacity-0': !idle }"
     >
       <Icon
@@ -59,12 +59,10 @@ const strokeOpacity = useClamp(
   1
 );
 const animationDone = useEq(strokeOpacity, 0);
-const { idle } = useIdle(5 * 1000);
+const { idle } = useIdle(1000);
 
 onMounted(() => {
   strokeLength.value = logo.value?.getTotalLength() ?? 0;
-  if (!fullyLoaded.value) {
-    fullyLoaded.value = true;
-  }
+  fullyLoaded.value = true;
 });
 </script>
