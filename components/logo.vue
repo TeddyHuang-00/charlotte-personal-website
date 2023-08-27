@@ -1,5 +1,9 @@
 <template>
-  <div :style="`height: ${strokeLength + height}px`" class="relative w-full">
+  <div
+    :style="`height: ${strokeLength + height}px`"
+    class="relative w-full"
+    v-show="fullyLoaded"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="384"
@@ -34,11 +38,9 @@ const logo = ref(null as SVGPathElement | null);
 const strokeLength = ref(0);
 const { height } = useWindowSize();
 const { y } = useWindowScroll();
+const fullyLoaded = ref(false);
 
 const speedFactor = 2;
-onMounted(() => {
-  strokeLength.value = logo.value?.getTotalLength() ?? 0;
-});
 const strokeOffset = useMax(0, useSub(strokeLength, useMul(y, speedFactor)));
 const strokeOpacity = useClamp(
   useSub(1, useDiv(useSub(useMul(y, speedFactor), strokeLength), strokeLength)),
@@ -49,5 +51,8 @@ const animationDone = useEq(strokeOpacity, 0);
 
 onMounted(() => {
   strokeLength.value = logo.value?.getTotalLength() ?? 0;
+  if (!fullyLoaded.value) {
+    fullyLoaded.value = true;
+  }
 });
 </script>

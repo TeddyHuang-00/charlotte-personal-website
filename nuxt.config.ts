@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   app: {
     baseURL: "/nhuang1/",
+    pageTransition: { name: "page" },
   },
   devtools: { enabled: true },
   modules: [

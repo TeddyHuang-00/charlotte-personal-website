@@ -15,7 +15,10 @@
           'w-5 h-5 -left-6 bg-zinc-900': act,
         }"
       ></span>
-      <h1 :class="{ 'text-2xl flex-grow-0': !act, 'text-3xl flex-grow': act }">
+      <h1
+        class="bg-gradient-to-r from-indigo-200 via-red-200 to-yellow-100 bg-clip-text hover:text-transparent"
+        :class="{ 'text-2xl flex-grow-0': !act, 'text-3xl flex-grow': act }"
+      >
         {{ ids[i] }}
       </h1>
     </NuxtLink>
