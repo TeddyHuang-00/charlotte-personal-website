@@ -22,7 +22,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18 # 20 breaks at the moment
+          node-version: 20
           cache: pnpm
 
       - name: Install dependencies
