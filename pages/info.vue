@@ -16,26 +16,34 @@
         <div class="w-full h-screen"></div>
         <section id="bio" class="wrapper">
           <p ref="b">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Aspernatur, earum voluptatibus fugit deserunt modi omnis quibusdam!
-            Error dolores libero totam tempora possimus illo laboriosam commodi,
-            iusto eum. Tempora, enim adipisci.
+            Nan Huang is a Ph.D. student in the College of Computing and
+            Informatics at the University of North Carolina at Charlotte. Nan
+            received his B.E. in Bioinformatics from Peking University in 2023
+            summer. His research focuses on Data Analysis and Deep Learning.
+            Besides, Nan also owns a passion in software engineering and web
+            development. He is a hobbyist-level full-stack developer and has
+            developed several web applications for both academic and casual
+            purposes. He is also a big fan of open-source software and has
+            contributed to several open-source projects.
           </p>
         </section>
         <section id="research" class="wrapper">
           <p ref="r">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi
-            quo quia architecto sint ipsum impedit beatae! Nam, repellat! Qui
-            aliquid itaque ab pariatur maiores saepe, animi consequatur vel
-            corrupti facilis?
+            Nan's research interest mainly lies in applying machine learning and
+            deep learning techniques to systematically analyze biological data
+            and model biological systems. He is now working under the
+            supervision of Dr. Xiang Zhang, emphasizing on applying deep
+            learning methods to analyze EEG signals to boost healthcare
+            development. He is also a member of the Charlotte Maching Learning
+            Lab (CharMLab) at UNC Charlotte.
           </p>
         </section>
         <section id="contact" class="wrapper">
           <p ref="c">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam magni
-            debitis, ipsum illum dicta, ratione est vel voluptatem quibusdam
-            repudiandae eius veniam nihil earum quidem provident praesentium.
-            Voluptas, ipsa dolores?
+            <ul>
+              <li>Woodward Hall 437, 28262</li>
+              <li><a href="mailto:nhuang1@uncc.edu">E-mail: nhuang1@uncc.edu</a></li>
+            </ul>
           </p>
         </section>
       </div>
