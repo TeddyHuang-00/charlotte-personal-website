@@ -15,36 +15,62 @@
       <div class="w-full md:w-1/2" v-show="fullyLoaded">
         <div class="w-full h-screen"></div>
         <section id="bio" class="wrapper">
-          <p ref="b">
-            Nan Huang is a Ph.D. student in the College of Computing and
-            Informatics at the University of North Carolina at Charlotte. Nan
-            received his B.E. in Bioinformatics from Peking University in 2023
-            summer. His research focuses on Data Analysis and Deep Learning.
-            Besides, Nan also owns a passion in software engineering and web
-            development. He is a hobbyist-level full-stack developer and has
-            developed several web applications for both academic and casual
-            purposes. He is also a big fan of open-source software and has
-            contributed to several open-source projects.
-          </p>
+          <span
+            ref="b"
+            class="flex flex-col gap-6 justify-evenly h-full mt-48 md:mt-0"
+          >
+            <p class="text-justify whitespace-break-spaces">
+              Nan Huang is a Ph.D. student in the College of Computing and
+              Informatics at the University of North Carolina at Charlotte. Nan
+              received his B.E. in Bioinformatics from Peking University in 2023
+              summer. His research focuses on Data Analysis and Deep Learning.
+            </p>
+            <p class="text-justify whitespace-break-spaces">
+              Besides, Nan also owns a passion in software engineering and web
+              development. He is a hobbyist-level full-stack developer and has
+              developed several web applications for both academic purposes. He
+              is also a big fan of open-source software and has contributed to
+              several open-source projects.
+            </p>
+          </span>
         </section>
         <section id="research" class="wrapper">
-          <p ref="r">
+          <p ref="r" class="text-justify whitespace-break-spaces mt-48 md:mt-0">
             Nan's research interest mainly lies in applying machine learning and
             deep learning techniques to systematically analyze biological data
             and model biological systems. He is now working under the
             supervision of Dr. Xiang Zhang, emphasizing on applying deep
             learning methods to analyze EEG signals to boost healthcare
-            development. He is also a member of the Charlotte Maching Learning
+            development. He is also a member of the Charlotte Machine Learning
             Lab (CharMLab) at UNC Charlotte.
           </p>
         </section>
         <section id="contact" class="wrapper">
-          <p ref="c">
-            <ul>
-              <li>Woodward Hall 437, 28262</li>
-              <li><a href="mailto:nhuang1@uncc.edu">E-mail: nhuang1@uncc.edu</a></li>
-            </ul>
-          </p>
+          <ul
+            ref="c"
+            class="flex flex-col justify-evenly h-[50vh] mt-48 md:mt-0"
+          >
+            <li>
+              <Icon name="ph:buildings-duotone" size="24" /> Woodward Hall 437,
+              28262
+            </li>
+            <li>
+              <a href="mailto:nhuang1@uncc.edu">
+                <Icon name="ph:envelope-duotone" size="24" /> E-mail:
+                nhuang1@uncc.edu
+              </a>
+            </li>
+            <li>
+              <a
+                rel="noopener"
+                target="_blank"
+                href="https://teddyhuang-00.github.io"
+              >
+                <Icon name="ph:house-line-duotone" size="24" />
+                Homepage: teddyhuang-00.github.io
+              </a>
+            </li>
+          </ul>
         </section>
       </div>
     </div>
@@ -94,6 +120,6 @@ watchOnce(useDebounce(useElementVisibility(bottom)), (v) =>
 
 <style scoped>
 .wrapper {
-  @apply flex justify-center items-center min-h-screen;
+  @apply flex justify-center items-center min-h-screen my-4;
 }
 </style>
