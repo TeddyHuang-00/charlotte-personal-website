@@ -19,13 +19,13 @@
             ref="b"
             class="flex flex-col gap-6 justify-evenly h-full mt-48 md:mt-0"
           >
-            <p class="text-justify whitespace-break-spaces">
+            <p class="text-justify whitespace-break-spaces md:leading-loose">
               Nan Huang is a Ph.D. student in the College of Computing and
               Informatics at the University of North Carolina at Charlotte. Nan
               received his B.E. in Bioinformatics from Peking University in 2023
               summer. His research focuses on Data Analysis and Deep Learning.
             </p>
-            <p class="text-justify whitespace-break-spaces">
+            <p class="text-justify whitespace-break-spaces md:leading-loose">
               Besides, Nan also owns a passion in software engineering and web
               development. He is a hobbyist-level full-stack developer and has
               developed several web applications for both academic purposes. He
@@ -35,7 +35,10 @@
           </span>
         </section>
         <section id="research" class="wrapper">
-          <p ref="r" class="text-justify whitespace-break-spaces mt-48 md:mt-0">
+          <p
+            ref="r"
+            class="text-justify whitespace-break-spaces mt-48 md:mt-0 md:leading-loose"
+          >
             Nan's research interest mainly lies in applying machine learning and
             deep learning techniques to systematically analyze biological data
             and model biological systems. He is now working under the
@@ -51,8 +54,8 @@
             class="flex flex-col justify-evenly h-[50vh] mt-48 md:mt-0"
           >
             <li>
-              <Icon name="ph:buildings-duotone" size="24" /> Woodward Hall 437,
-              28262
+              <Icon name="ph:buildings-duotone" size="24" /> Office: Woodward
+              Hall 437, 28262
             </li>
             <li>
               <a href="mailto:nhuang1@uncc.edu">
