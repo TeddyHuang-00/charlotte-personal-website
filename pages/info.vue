@@ -54,6 +54,13 @@
             class="flex flex-col justify-evenly h-[50vh] mt-48 md:mt-0"
           >
             <li>
+              <img
+                src="nan-huang.png"
+                alt="Photo of Nan Huang"
+                class="w-full max-w-xs drop-shadow-[0_-5px_5px_rgba(255,255,255,0.25)]"
+              />
+            </li>
+            <li>
               <Icon name="ph:buildings-duotone" size="24" /> Office: Woodward
               Hall 437, 28262
             </li>
