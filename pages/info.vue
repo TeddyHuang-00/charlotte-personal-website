@@ -55,7 +55,7 @@
           >
             <li>
               <img
-                src="nan-huang.png"
+                src="/nan-huang.png"
                 alt="Photo of Nan Huang"
                 class="w-full max-w-xs drop-shadow-[0_-5px_5px_rgba(255,255,255,0.25)]"
               />
